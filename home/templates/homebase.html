@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <!--title meta tag lar değişken halde olmalı, değiştirebilmeliyiz-->
+	<head>
+    {% load static %}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--blog bize pencere açar-->
+    <title>{% block title %}Anasayfa    {% endblock %}</title>
+    <meta name="keywords" content="{% block keywords %} Anasayfa anahtar kelimeler    {% endblock %}" />
+	<meta name="description" content="{% block description %} Anasayfa kısa açıklama	{% endblock %}" />
+	<meta name="author" content="{% block author %}Yazar{% endblock %}" />
+
+	<!--
+	//////////////////////////////////////////////////////
+
+	FREE HTML5 TEMPLATE
+	DESIGNED & DEVELOPED by FreeHTML5.co
+
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
+
+	//////////////////////////////////////////////////////
+	 -->
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:400,600,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{% static 'css/icomoon.css' %}"/>
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}"/>
+
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="{% static 'css/flexslider.css' %}"/>
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="{% static 'js/respond.min.js' %}"></script>
+	<![endif]-->
+    {% block head %}   {% endblock %}
+
+	</head>
+
+    
+
+    <body>
+      <!--header değişmeyeceği için buraya include ediyoruz-->
+    {% include 'header.html' %}
+    <!--seçimli yapmak istersek block oluşturuyoruz, kullanmak istersek eğer-->
+    {% block slider %}  {% endblock %}
+    {% block sidebar %}   {% endblock %}
+
+    {% block content %}   {% endblock %}
+    {% include 'footer.html' %}
+    {% block foot %}    {% endblock %}
+    </body>
+   <!--footer ve header fix diğerleri değişken-->
+</html>
