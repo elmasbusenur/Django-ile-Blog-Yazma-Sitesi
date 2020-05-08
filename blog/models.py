@@ -10,7 +10,7 @@ class Category(models.Model):
         ('True', 'Evet'),
         ('False', 'Hayır'),
     )
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=100)
     keywords = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
@@ -30,7 +30,7 @@ class Blog(models.Model): #kategori ile ilişki kuruyoruz
         ('False', 'Hayır'),
     )
     category = models.ForeignKey(Category, on_delete=models.CASCADE) #foreignkey kategori: kategoriye refere ettik
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=150)
     keywords = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
@@ -43,3 +43,20 @@ class Blog(models.Model): #kategori ile ilişki kuruyoruz
 
     def __str__(self):
         return self.title
+#ilk olarak ilişki kuracağım alanı yzıyorum blog tablosu..cascade= on delete durumunda (drapdown)ilişkili olduğu product silinirse buda silinmeli
+#bağlı olduğu şey silinirse alt alan havada kalır oda silinmeli
+class Images(models.Model):
+    blog=models.ForeignKey(Blog,on_delete=models.CASCADE)
+    title = models.CharField(max_length=50,blank=True)#blankTrue dersek etiketi boş geçmemize izin verir
+    image = models.ImageField(blank=True, upload_to='images/')
+    #bu değişikliği yaptıktan sonra veritabanında migrate etmek gerekir
+#python manage.py makemigrations  şu dosyayı oluşturdum
+#python manage.py migrate ile de migrate ediyorum veri tabanına işliyor
+#veritabanında title image bolog_id oluştu
+#django frameworkte id ler otomatik oluşur
+
+    #bu model ne döndersin..veritabanında şimdi ürünlerin ismi gözüküyor
+    def __str__(self):
+        return self.title
+
+
