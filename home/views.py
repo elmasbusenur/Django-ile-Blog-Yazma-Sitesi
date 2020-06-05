@@ -2,7 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
+from home.models import Setting
 def index(request):
-    text="Django Kurulum: python -m pip install -e django/ <br> Proje Oluşturma: django-admin startproject mysite <br> App Ekleme: python manage.py startapp polls"
-    context = {'text': text}
+    setting = Setting.objects.get(pk=1) #primary key 1 i çağırıyor
+    context = {'setting': setting}
     return render(request, 'index.html', context)
+#contexte ekledik ve index html e gönderdik ve index html de istediğimiz yere istediğimiz bilgileri yazdık
+
