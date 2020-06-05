@@ -1,6 +1,8 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
+from django.forms import ModelForm, TextInput, Textarea
+
 class Setting(models.Model):  # kategori ile ilişki kuruyoruz
     STATUS = (
         ('True', 'Evet'),
@@ -32,3 +34,37 @@ class Setting(models.Model):  # kategori ile ilişki kuruyoruz
     def __str__(self):
         return self.title
     #migrate yapıcaz.python manage.py makemigrations
+
+
+class ContactFormMessage(models.Model):  # kategori ile ilişki kuruyoruz
+    STATUS = (
+        ('New', 'New'),
+        ('Read', 'Read'),
+        ('Closed','Closed'),
+)
+    name = models.CharField(blank=True,max_length=20)
+    email = models.CharField(blank=True, max_length=50)
+    subject = models.CharField(blank=True, max_length=50)
+    message = models.CharField(blank=True,max_length=255)
+    status = models.CharField(max_length=10, choices=STATUS,default='New')
+    ip = models.CharField(blank=True,max_length=20)
+    note = models.CharField(blank=True,max_length=100)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+class ContactFormu(ModelForm): #bu form hangi modele ait contact form modele ait
+    class Meta:
+        model = ContactFormMessage
+        fields = ['name', 'email', 'subject', 'message'] #bu formda hangi elemanlar görünecek
+        widgets = {  #hangi nesneler nasıl görünücek
+            'name' :TextInput(attrs={'class' : 'input','placeholder': 'Name & Surname'}),
+            'email': TextInput(attrs={'class': 'input', 'placeholder': 'Email Address'}),
+            'subject': TextInput(attrs={'class': 'input', 'placeholder': 'Subject'}),
+            'message': Textarea(attrs={'class': 'input', 'placeholder': 'Your message', 'rows':'5'}),
+       }
+    def __str__(self):
+        return self.name
+

@@ -25,6 +25,27 @@
 					</div>
 				</div>
 			</div>
+            <div id="fh5co-contact" class="fh5co-no-pd-top">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-12 col-md-offset-0 text-center fh5co-heading">
+					<h2><span>Bize Ulaşın</span></h2>
+				</div>
+			</div>
+            {% if messages %}
+                {%  for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" roles="alert"> <!--alert alert success-->
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form action="" methods="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="SEND FORM">
+            </form>
+
 		</div>
 	</div>
 
