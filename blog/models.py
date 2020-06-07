@@ -15,7 +15,7 @@ class Category(models.Model):
     description = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
     status = models.CharField(max_length=10, choices=STATUS)
-    slug = models.SlugField()
+    slug = models.SlugField() #adres satırında ürünü çağırabilmemiz için yazdığımız metin
     parent = models.ForeignKey('self', blank=True, null=True, related_name='children',
                                on_delete=models.CASCADE)  # foreignkey self kendi id sine refere edicek
     create_at = models.DateTimeField(auto_now_add=True)
@@ -39,12 +39,13 @@ class Blog(models.Model):  # kategori ile ilişki kuruyoruz
     )
     category = models.ForeignKey(Category, on_delete=models.CASCADE)  # foreignkey kategori: kategoriye refere ettik
     title = models.CharField(max_length=150)
-    keywords = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
+    keywords = models.CharField(blank=True,max_length=255)
+    description = models.CharField(blank=True,max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
-    price = models.FloatField()
+    price = models.FloatField(blank=True)
     amount = models.IntegerField()
     detail = RichTextUploadingField()
+    slug = models.SlugField(blank=True,max_length=150)  # adres satırında ürünü çağırabilmemiz için yazdığımız metin
     status = models.CharField(max_length=10, choices=STATUS)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
