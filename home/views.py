@@ -1,4 +1,4 @@
-from blog.models import Blog
+from blog.models import Blog, Category
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
@@ -11,7 +11,10 @@ from home.models import Setting, ContactFormu, ContactFormMessage
 def index(request):
     setting = Setting.objects.get(pk=1)  # primary key 1 i çağırıyor
     sliderdata = Blog.objects.all()[:3] #get deseydik şart giricektik , :3 ürün al slider dataya at
+    category = Category.objects.all()
+
     context = {'setting': setting,
+               'category': category, #categorileri index sayfasına gönderiyoruz
                'page' : 'home',
                'sliderdata':sliderdata } #sliderdata yı contexte yükledik
     return render(request, 'index.html', context) #indexe gönderiyoruz

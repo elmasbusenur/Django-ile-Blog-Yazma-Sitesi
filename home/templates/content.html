@@ -150,29 +150,25 @@
 						</div>
 					</div>
 				</div>
-
+<!--SİDEBAR-->
 				<aside id="sidebar">
 					<div class="col-md-3">
 						<div class="side animate-box">
 							<div class="col-md-12 col-md-offset-0 text-center fh5co-heading fh5co-heading-sidebar">
-								<h2><span>About Me</span></h2>
+								<h2><span>WhoAreWe?</span></h2>
 							</div>
 							<div class="fh5co-staff">
 								<img src="{% static 'images/user-2.jpg' %}" alt="Free HTML5 Templates by FreeHTML5.co">
-								<h3>Jean Smith</h3>
-								<strong class="role">CEO, Founder</strong>
+
+
 								<p>Quos quia provident conse culpa facere ratione maxime commodi voluptates id repellat velit eaque aspernatur expedita.</p>
-								<ul class="fh5co-social-icons">
-									<li><a href="#"><i class="icon-facebook"></i></a></li>
-									<li><a href="#"><i class="icon-twitter"></i></a></li>
-									<li><a href="#"><i class="icon-dribbble"></i></a></li>
-									<li><a href="#"><i class="icon-github"></i></a></li>
-								</ul>
+
 							</div>
 						</div>
+
 						<div class="side animate-box">
 							<div class="col-md-12 col-md-offset-0 text-center fh5co-heading fh5co-heading-sidebar">
-								<h2><span>Latest Posts</span></h2>
+								<h2><span>Latest Blogs</span></h2>
 							</div>
 							<div class="blog-entry">
 								<a href="#">
@@ -207,12 +203,86 @@
 								<h2><span>Category</span></h2>
 							</div>
 							<ul class="category">
-								<li><a href="#"><i class="icon-check"></i>Lifestyle</a></li>
-								<li><a href="#"><i class="icon-check"></i>Web Development</a></li>
-								<li><a href="#"><i class="icon-check"></i>Web Design</a></li>
-								<li><a href="#"><i class="icon-check"></i>Nature</a></li>
-								<li><a href="#"><i class="icon-check"></i>Life</a></li>
-								<li><a href="#"><i class="icon-check"></i>Entertainment</a></li>
+                            <!--temlatede kategoriyi dinamik hale getiriyorum
+                            altta ki categori viewden çağırdım..django mptt kütüphanesini kullanarak kategoriyi adminde
+                            işlevsel hale getidik-->
+                                {% load mptt_tags %}
+
+                                {% recursetree category %}
+                                    <li class="has-dropdown">
+                                        <a href="/category/{{ node.slug }}"><i class="icon-check"></i>{{ node.title }}</a>
+										<ul class="dropdown">
+
+                                        {% if not node.is_leaf_node %}
+                                            <ul class="children">
+                                            <li><a href="/category/{{ node.slug }}">{{children}}</a></li>
+                                            </ul>
+                                        {% endif %}
+                                        </ul>
+                                     </li>
+                                {% endrecursetree %}
+<!--
+                                <li class="has-dropdown">
+                                    <a href="blog.html"><i class="icon-check"></i>Akdeniz</a>
+										<ul class="dropdown">
+											<li><a href="#">Antalya</a></li>
+											<li><a href="#">Muğla</a></li>
+											<li><a href="#">Adana</a></li>
+
+										</ul>
+                                </li>
+
+								<li><a href="#"><i class="icon-check"></i></a></li>
+                                <li class="has-dropdown">
+                                    <a href="blog.html"><i class="icon-check"></i>Doğu Anadolu</a>
+                                    <ul class="dropdown">
+                                                <li><a href="#">Erzurum</a></li>
+                                                <li><a href="#">Erzincan</a></li>
+                                                <li><a href="#">Kars</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="has-dropdown">
+                                    <a href="blog.html"><i class="icon-check"></i>Ege</a>
+                                    <ul class="dropdown">
+                                                <li><a href="#">Muğla</a></li>
+                                                <li><a href="#">İzmir</a></li>
+                                                <li><a href="#">Aydın</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <li class="has-dropdown">
+                                    <a href="blog.html"><i class="icon-check"></i>Güneydoğu Anadolu</a>
+                                    <ul class="dropdown">
+                                                <li><a href="#">Mardin</a></li>
+                                                <li><a href="#">Gaziantep</a></li>
+                                                <li><a href="#">Şanlıurfa</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <li class="has-dropdown">
+                                    <a href="blog.html"><i class="icon-check"></i>İç Anadolu</a>
+                                    <ul class="dropdown">
+                                                <li><a href="#">Konya</a></li>
+                                                <li><a href="#">Eskişehir</a></li>
+                                                <li><a href="#">Nevşehir</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <li class="has-dropdown">
+                                    <a href="blog.html"><i class="icon-check"></i>Karadeniz</a>
+                                    <ul class="dropdown">
+                                                <li><a href="#">Karabük</a></li>
+                                                <li><a href="#">Trabzon </a></li>
+                                                <li><a href="#">Bolu</a></li>
+
+                                    </ul>
+                                </li>
+
+-->
 							</ul>
 						</div>
 						<div class="side animate-box">
