@@ -1,0 +1,67 @@
+<!--bu sayfasa homebase e bağlı olarak çalışıcam-->
+{% extends 'homebase.html' %}
+
+{% block title %}}Bloglar{{categorydata.title}}{% endblock %}
+{% block keywords %}{{categorydata.keywords}}{% endblock %}
+{% block description %}{{categorydata.description}}{% endblock %}
+
+{% block head %}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ setting.icon.url }}"/>
+{% endblock %}
+
+
+{% block content %}
+<div id="fh5co-content" class="fh5co-no-pd-top">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+					<h2><span>{{categorydata.title}}</span></h2>
+				</div>
+			</div>
+			<div class="row">
+                <div id="fh5co-content" class="fh5co-no-pd-top">
+                    <div class="container">
+                        <div class="row animate-box">
+                            <div class="col-md-12 col-md-offset-0 text-center fh5co-heading">
+                                <h2><span>Our Blog</span></h2>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-9 col-padded-right">
+                                <div class="row">
+                                    <!--1-->
+                                    {% for rs in blogs %}
+                                    <div class="col-md-12">
+                                        <div class="fh5co-blog animate-box">
+                                            <div class="title title-pin text-center">
+                                                <span class="posted-on">{{ rs.description }}</span>
+                                                <h3><a href="#">{{ rs.title }}</a></h3>
+                                                <span class="category">Lifestyle</span>
+                                            </div>
+                                            <a href="#"><img class="img-responsive" src="{{rs.image.url}}" alt=""></a>
+                                            <div class="blog-text text-center">
+                                                <p>{{ rs.details }} </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="fh5co-staff">
+
+                                    {{ setting.aboutus|safe }} <!--safe olması html taglarıda gelir-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}
+<!--burada eklediğimiz şeyler sayfada görünmesini istediğimiz şeyler-->

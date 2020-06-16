@@ -6,18 +6,19 @@ from django.shortcuts import render
 # Create your views here.
 from home.models import Setting, ContactFormu, ContactFormMessage
 
-#slider a gelen verileri buradan göndericem
-#sorgu yapmamız gerekecek
+
+# slider a gelen verileri buradan göndericem
+# sorgu yapmamız gerekecek
 def index(request):
     setting = Setting.objects.get(pk=1)  # primary key 1 i çağırıyor
-    sliderdata = Blog.objects.all()[:3] #get deseydik şart giricektik , :3 ürün al slider dataya at
+    sliderdata = Blog.objects.all()[:3]  # get deseydik şart giricektik , :3 ürün al slider dataya at
     category = Category.objects.all()
 
     context = {'setting': setting,
-               'category': category, #categorileri index sayfasına gönderiyoruz
-               'page' : 'home',
-               'sliderdata':sliderdata } #sliderdata yı contexte yükledik
-    return render(request, 'index.html', context) #indexe gönderiyoruz
+               'category': category,  # categorileri index sayfasına gönderiyoruz
+               'page': 'home',
+               'sliderdata': sliderdata}  # sliderdata yı contexte yükledik
+    return render(request, 'index.html', context)  # indexe gönderiyoruz
 
 
 # contexte ekledik ve index html e gönderdik ve index html de istediğimiz yere istediğimiz bilgileri yazdık
@@ -48,6 +49,18 @@ def iletisim(request):
             return HttpResponseRedirect('/iletisim')  # formu iletişim sayfasına gönderiyoruz
 
     setting = Setting.objects.get(pk=1)
-    form = ContactFormu() #contact formu çağrıyoruz
+    form = ContactFormu()  # contact formu çağrıyoruz
     context = {'setting': setting, 'form': form}
-    return render(request, 'iletisim.html', context) #ilettişim sayfasına formu gönderiyoruz
+    return render(request, 'iletisim.html', context)  # ilettişim sayfasına formu gönderiyoruz
+
+
+def category_blogs(request, id,slug):
+    blogs = Blog.objects.filter(category_id=id)
+    category = Category.objects.all()
+    categorydata = Category.objects.get(pk=id)
+    context = {'blogs': blogs,
+               'category': category,
+               'categorydata': categorydata
+               }
+
+    return render(request, 'blogs.html', context)

@@ -78,6 +78,13 @@ class Images(models.Model):
     title = models.CharField(max_length=50, blank=True)  # blankTrue dersek etiketi boş geçmemize izin verir
     image = models.ImageField(blank=True, upload_to='images/')
 
+    def __str__(self):
+        return self.title
+
+    def image_tag(self):
+        return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+    image_tag.short_description = 'Image'
+
     # bu değişikliği yaptıktan sonra veritabanında migrate etmek gerekir
     # python manage.py makemigrations  şu dosyayı oluşturdum
     # python manage.py migrate ile de migrate ediyorum veri tabanına işliyor
@@ -85,10 +92,4 @@ class Images(models.Model):
     # django frameworkte id ler otomatik oluşur
 
     # bu model ne döndersin..veritabanında şimdi ürünlerin ismi gözüküyor
-    def __str__(self):
-        return self.title
-    def image_tag(self):
-        return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
-
-    image_tag.short_description = 'Image'
 
