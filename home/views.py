@@ -1,6 +1,6 @@
 from blog.models import Blog, Category
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
@@ -9,15 +9,25 @@ from home.models import Setting, ContactFormu, ContactFormMessage
 
 # slider a gelen verileri buradan göndericem
 # sorgu yapmamız gerekecek
+#burada ki kısımlar anasayfayı dinamik hale getiriyor
 def index(request):
     setting = Setting.objects.get(pk=1)  # primary key 1 i çağırıyor
     sliderdata = Blog.objects.all()[:3]  # get deseydik şart giricektik , :3 ürün al slider dataya at
     category = Category.objects.all()
+    dayblogs = Blog.objects.all()[:4]
+    lastblogs = Blog.objects.all().order_by('-id')[:1]
+    randomblogs = Blog.objects.all().order_by('?')[:4] #random ürün seçiyoruz. 4 adet.
+
 
     context = {'setting': setting,
                'category': category,  # categorileri index sayfasına gönderiyoruz
                'page': 'home',
-               'sliderdata': sliderdata}  # sliderdata yı contexte yükledik
+               'sliderdata': sliderdata, # sliderdata yı contexte yükledik
+               'dayblogs': dayblogs,
+               'lastblogs': lastblogs,
+               'randomblogs': randomblogs,
+
+               }
     return render(request, 'index.html', context)  # indexe gönderiyoruz
 
 
@@ -54,7 +64,7 @@ def iletisim(request):
     return render(request, 'iletisim.html', context)  # ilettişim sayfasına formu gönderiyoruz
 
 
-def category_blogs(request, id,slug):
+def category_blogs(request, id): #slug
     blogs = Blog.objects.filter(category_id=id)
     category = Category.objects.all()
     categorydata = Category.objects.get(pk=id)
@@ -62,5 +72,4 @@ def category_blogs(request, id,slug):
                'category': category,
                'categorydata': categorydata
                }
-
     return render(request, 'blogs.html', context)

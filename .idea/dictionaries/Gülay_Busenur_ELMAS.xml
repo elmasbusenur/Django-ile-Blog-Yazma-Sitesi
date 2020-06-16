@@ -2,35 +2,95 @@
   <dictionary name="Gülay Busenur ELMAS">
     <words>
       <w>aboutus</w>
+      <w>adet</w>
+      <w>adminde</w>
+      <w>altta</w>
+      <w>anasayfayı</w>
+      <w>başarıyla</w>
+      <w>bilgileri</w>
+      <w>bloglar</w>
       <w>blogs</w>
       <w>burada</w>
+      <w>buradan</w>
+      <w>categori</w>
+      <w>categorileri</w>
       <w>categorydata</w>
       <w>ckeditor</w>
       <w>contexte</w>
+      <w>dataya</w>
+      <w>dayblogs</w>
       <w>dersek</w>
+      <w>deseydik</w>
+      <w>dinamik</w>
+      <w>ederiz</w>
+      <w>edildi</w>
+      <w>edilmezse</w>
+      <w>ekledik</w>
+      <w>eşleşti̇r</w>
       <w>formu</w>
+      <w>formunu</w>
+      <w>gelen</w>
+      <w>gerekecek</w>
+      <w>getirdik</w>
+      <w>getiriyor</w>
+      <w>getiriyorum</w>
+      <w>giricektik</w>
       <w>gönderdik</w>
+      <w>göndericem</w>
+      <w>gönderilmiştir</w>
+      <w>gönderiyoruz</w>
       <w>gösteriyor</w>
       <w>göstermeyi</w>
       <w>hakkimizda</w>
       <w>iletisim</w>
+      <w>iletişim</w>
+      <w>ilettişim</w>
+      <w>indexe</w>
+      <w>iner</w>
+      <w>istediğimiz</w>
       <w>içinde</w>
+      <w>işlevsel</w>
       <w>i̇lgi̇li̇</w>
       <w>i̇sim</w>
       <w>i̇şleri̇</w>
+      <w>kategoriyi</w>
+      <w>kullanarak</w>
+      <w>kütüphanesini</w>
       <w>kısım</w>
+      <w>kısımlar</w>
+      <w>lastblogs</w>
       <w>mesaj</w>
+      <w>mesajınız</w>
       <w>mptt</w>
       <w>olduğunu</w>
+      <w>popüler</w>
+      <w>postla</w>
+      <w>randomblogs</w>
       <w>referanslar</w>
       <w>referanslarimiz</w>
       <w>resimleri</w>
       <w>rootun</w>
+      <w>sayfasına</w>
       <w>sağlıyor</w>
+      <w>seçiyoruz</w>
       <w>sliderdata</w>
+      <w>sorgu</w>
       <w>soyisim</w>
       <w>telefon</w>
+      <w>temlatede</w>
+      <w>teşekkür</w>
+      <w>verileri</w>
+      <w>viewden</w>
+      <w>yapmamız</w>
+      <w>yazdık</w>
+      <w>yere</w>
       <w>yöneti̇m</w>
+      <w>yükledik</w>
+      <w>çağrıyoruz</w>
+      <w>çağırdım</w>
+      <w>çağırıyor</w>
+      <w>ürün</w>
+      <w>şart</w>
     </words>
   </dictionary>
 </component>
