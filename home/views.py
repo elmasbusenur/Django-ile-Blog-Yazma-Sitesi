@@ -1,6 +1,6 @@
-from blog.models import Blog, Category
+from blog.models import Blog, Category, Images
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -12,7 +12,7 @@ from home.models import Setting, ContactFormu, ContactFormMessage
 #burada ki kısımlar anasayfayı dinamik hale getiriyor
 def index(request):
     setting = Setting.objects.get(pk=1)  # primary key 1 i çağırıyor
-    sliderdata = Blog.objects.all()[:3]  # get deseydik şart giricektik , :3 ürün al slider dataya at
+    sliderdata = Blog.objects.all()[:5]  # get deseydik şart giricektik , :3 ürün al slider dataya at
     category = Category.objects.all()
     dayblogs = Blog.objects.all()[:4]
     lastblogs = Blog.objects.all().order_by('-id')[:1]
@@ -73,3 +73,16 @@ def category_blogs(request, id): #slug
                'categorydata': categorydata
                }
     return render(request, 'blogs.html', context)
+
+def blog_detail(request,id,slug):
+    category = Category.objects.all()
+    blog = Blog.objects.get(pk=id)
+    images = Images.objects.filter(blog_id=id)
+    #comments = Comment.objects.filter(blog_id=id, status="True")
+    context = {'blog': blog,
+               'category': category,
+               'images': images,
+               #'comments': comments,
+               }
+    return render(request, 'bloga_git.html',context)
+

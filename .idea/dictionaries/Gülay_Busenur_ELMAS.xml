@@ -8,6 +8,7 @@
       <w>anasayfayı</w>
       <w>başarıyla</w>
       <w>bilgileri</w>
+      <w>bloga</w>
       <w>bloglar</w>
       <w>blogs</w>
       <w>burada</w>
@@ -26,10 +27,12 @@
       <w>edildi</w>
       <w>edilmezse</w>
       <w>ekledik</w>
+      <w>eklediğimiz</w>
       <w>eşleşti̇r</w>
       <w>formu</w>
       <w>formunu</w>
       <w>gelen</w>
+      <w>gelir</w>
       <w>gerekecek</w>
       <w>getirdik</w>
       <w>getiriyor</w>
@@ -39,6 +42,7 @@
       <w>göndericem</w>
       <w>gönderilmiştir</w>
       <w>gönderiyoruz</w>
+      <w>görünmesini</w>
       <w>gösteriyor</w>
       <w>göstermeyi</w>
       <w>hakkimizda</w>
@@ -63,6 +67,7 @@
       <w>mesajınız</w>
       <w>mptt</w>
       <w>olduğunu</w>
+      <w>olmasa</w>
       <w>popüler</w>
       <w>postla</w>
       <w>randomblogs</w>
@@ -70,12 +75,14 @@
       <w>referanslarimiz</w>
       <w>resimleri</w>
       <w>rootun</w>
+      <w>sayfada</w>
       <w>sayfasına</w>
       <w>sağlıyor</w>
       <w>seçiyoruz</w>
       <w>sliderdata</w>
       <w>sorgu</w>
       <w>soyisim</w>
+      <w>taglarıda</w>
       <w>telefon</w>
       <w>temlatede</w>
       <w>teşekkür</w>
@@ -91,6 +98,7 @@
       <w>çağırıyor</w>
       <w>ürün</w>
       <w>şart</w>
+      <w>şeyler</w>
     </words>
   </dictionary>
 </component>

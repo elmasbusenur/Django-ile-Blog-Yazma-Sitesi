@@ -11,11 +11,11 @@ urlpatterns = [
     path('hakkimizda/', views.hakkimizda, name='hakkimizda'),
     path('referanslar/', views.referanslar, name='referanslar'),
     path('iletisim/', views.iletisim, name='iletisim'),
-
     path('home/', include('home.urls')),
     path('blog/', include('blog.urls')),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('blog/<int:id>/<slug:slug>/', views.blog_detail, name='blog_detail'),
 ]
 
 # media rootun url içinde olduğunu gösteriyor.

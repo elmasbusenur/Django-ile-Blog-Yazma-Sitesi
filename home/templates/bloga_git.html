@@ -1,0 +1,45 @@
+<!--bu sayfasa homebase e bağlı olarak çalışıcam-->
+{% extends 'homebase.html' %}
+
+{% block title %}{{blog.title}}{% endblock %}
+{% block keywords %}{{blog.keywords}}{% endblock %}
+{% block description %}{{blog.description}}{% endblock %}
+
+{% block head %}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ setting.icon.url }}"/>
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-content" class="fh5co-no-pd-top">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+					<h2><span>{{blog.title}}</span></h2>
+				</div>
+			</div>
+			<div class="col-md-12">
+							<div class="fh5co-blog animate-box">
+
+								<div class="title title-pin text-center">
+
+                                        <span class="posted-on">{{blog.title}}</span>
+                                        <h4><a href="/category/{{ blog.category_id }}/{{ blog.category.slug }}">{{ blog.category }}>{{ blog.title }}</a></h4>
+                                        <span class="category">{{blog.description}}</span>
+                                        {% for rs in images %}
+
+                                        <img class="img-responsive" src="{{rs.image.url}}" style="width: auto; height: auto; padding-left:80px;padding-right: 50px;padding-bottom: 10px " alt="">
+
+                                        {% endfor %}
+                                <p>{{blog.detail | safe}}</p>
+
+
+
+
+								</div>
+							</div>
+            </div>
+		</div>
+</div>
+
+{% endblock %}
+<!--burada eklediğimiz şeyler sayfada görünmesini istediğimiz şeyler-->
